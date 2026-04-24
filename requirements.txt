@@ -1,0 +1,36 @@
+# ============================================================
+# DEPENDENCIAS DEL PROYECTO - Task Manager con FastAPI
+# ============================================================
+# Para instalar todas las dependencias ejecuta:
+#   pip install -r requirements.txt
+#
+# ¿Qué es requirements.txt?
+#   Es un archivo estándar de Python que lista todos los paquetes
+#   (librerías) que tu proyecto necesita para funcionar.
+#   Piénsalo como la "lista de ingredientes" de tu aplicación.
+# ============================================================
+
+# FastAPI - El framework web principal
+# Es el "corazón" de nuestro proyecto. Nos permite crear
+# APIs HTTP de forma rápida y con validación automática.
+# Versión >=0.100 ya incluye soporte nativo para Pydantic v2.
+fastapi>=0.110.0
+
+# Uvicorn - El servidor ASGI que ejecuta FastAPI
+# ASGI = Asynchronous Server Gateway Interface.
+# Uvicorn es quien "escucha" las peticiones HTTP y las
+# pasa a FastAPI para que las procese.
+# El extra [standard] instala también watchfiles (recarga automática).
+uvicorn[standard]>=0.29.0
+
+# SQLAlchemy - El ORM (Object Relational Mapper)
+# ORM = convierte tablas de base de datos en clases de Python.
+# En vez de escribir SQL crudo, trabajamos con objetos Python.
+# Ejemplo: Task (clase) <-> tasks (tabla en SQLite)
+sqlalchemy>=2.0.0
+
+# Pydantic - Validación y serialización de datos
+# FastAPI lo usa internamente para validar lo que entra y sale
+# de los endpoints. Con Pydantic defines "la forma" de tus datos.
+# Versión v2 es significativamente más rápida que v1.
+pydantic>=2.0.0
