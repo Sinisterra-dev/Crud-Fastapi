@@ -13,7 +13,7 @@
 # FastAPI - El framework web principal
 # Es el "corazón" de nuestro proyecto. Nos permite crear
 # APIs HTTP de forma rápida y con validación automática.
-# Versión >=0.100 ya incluye soporte nativo para Pydantic v2.
+# Versión >=0.100 ya incluye soporte nativo para Pydantic v2..
 fastapi>=0.110.0
 
 # Uvicorn - El servidor ASGI que ejecuta FastAPI
