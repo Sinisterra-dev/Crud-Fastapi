@@ -45,7 +45,7 @@ from typing import List, Optional
 import crud        # Funciones CRUD
 import models      # Modelos SQLAlchemy
 import schemas     # Schemas Pydantic
-from database import engine, get_db  # Conexión a la BD y generador de sesiones
+from core.database import engine, get_db  # Conexión a la BD y generador de sesiones
 
 
 # ============================================================

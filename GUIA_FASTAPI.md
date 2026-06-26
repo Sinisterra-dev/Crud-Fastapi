@@ -357,9 +357,10 @@ finally: db.close()  ← la sesión se cierra siempre, pase lo que pase
 ### La clase `Base` y por qué heredamos de ella
 
 ```python
-from database import Base
+from core.database import Base
 
-class Category(Base):      # ← hereda de Base
+
+class Category(Base):  # ← hereda de Base
     __tablename__ = "categories"
     ...
 ```
@@ -828,7 +829,8 @@ def read_tasks(db: Session = Depends(get_db)):  # recibe la sesión desde afuera
 
 ```python
 from fastapi import Depends
-from database import get_db
+from core.database import get_db
+
 
 @app.get("/tasks")
 def read_tasks(db: Session = Depends(get_db)):
@@ -854,7 +856,8 @@ Cuando FastAPI ve `Depends(get_db)`:
 # En tests, sobreescribimos la dependencia:
 from fastapi.testclient import TestClient
 from main import app
-from database import get_db
+from core.database import get_db
+
 
 def override_get_db():
     # BD de prueba en memoria, no toca la BD real
@@ -863,6 +866,7 @@ def override_get_db():
         yield test_db
     finally:
         test_db.close()
+
 
 app.dependency_overrides[get_db] = override_get_db
 client = TestClient(app)

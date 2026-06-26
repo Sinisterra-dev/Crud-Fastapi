@@ -38,7 +38,7 @@ from sqlalchemy.orm import relationship
 
 # Importamos Base desde database.py
 # TODOS los modelos deben heredar de esta clase
-from database import Base
+from core.database import Base
 
 
 # ============================================================
