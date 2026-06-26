@@ -45,7 +45,8 @@ from typing import List, Optional
 # Importamos todo lo que creamos en los otros archivos
 import models.task
 import models.category
-import schemas     # Schemas Pydantic
+import schemas.task
+import schemas.category
 from core.database import engine, get_db, Base   # Conexión a la BD y generador de sesiones
 from services import task_service as crud
 

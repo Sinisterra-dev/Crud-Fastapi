@@ -1,0 +1,28 @@
+# ============================================================
+# SCHEMAS.PY - Esquemas Pydantic (Validación de datos)
+# ============================================================
+# Pydantic es la librería que FastAPI usa para:
+#   1. VALIDAR datos de entrada (request body, parámetros)
+#   2. SERIALIZAR datos de salida (convertir objetos a JSON)
+#   3. DOCUMENTAR automáticamente la API
+#
+# ¿POR QUÉ SCHEMAS SEPARADOS DE LOS MODELOS?
+#   Los modelos SQLAlchemy (models.txt) representan la BD.
+#   Los schemas Pydantic representan lo que la API acepta/devuelve.
+#   Son capas diferentes con responsabilidades diferentes:
+#
+#   ENTRADA (request):
+#     Usuario envía JSON --> Pydantic lo valida --> SQLAlchemy lo guarda
+#
+#   SALIDA (response):
+#     SQLAlchemy devuelve objeto --> Pydantic lo serializa --> JSON al usuario
+#
+# CONCEPTOS QUE DEBES DOMINAR:
+#   - Type hints en Python (int, str, Optional, List, etc.)
+#   - Clases y herencia en Python
+#   - ¿Qué es la validación de datos?
+#   - ¿Qué es JSON?
+#   - ¿Qué es serialización/deserialización?
+#   - Decoradores en Python (@algo)
+# ============================================================
+
