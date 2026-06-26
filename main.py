@@ -14,7 +14,7 @@
 #       --> Uvicorn (servidor ASGI)
 #       --> FastAPI (router, validación)
 #       --> Función del endpoint
-#       --> crud.py (lógica de BD)
+#       --> task_service.py (lógica de BD)
 #       --> SQLAlchemy (ORM)
 #       --> SQLite (base de datos)
 #   Y el camino de vuelta es el inverso.
@@ -42,7 +42,6 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 
 # Importamos todo lo que creamos en los otros archivos
-import crud        # Funciones CRUD
 import models      # Modelos SQLAlchemy
 import schemas     # Schemas Pydantic
 from core.database import engine, get_db  # Conexión a la BD y generador de sesiones
