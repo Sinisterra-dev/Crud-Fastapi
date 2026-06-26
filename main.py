@@ -52,7 +52,7 @@ from services import task_service as crud
 # ============================================================
 # CREACIÓN DE TABLAS EN LA BASE DE DATOS
 # ============================================================
-# create_all() crea todas las tablas definidas en models.py
+# create_all() crea todas las tablas definidas en models.txt
 # si no existen todavía.
 #
 # Base.metadata contiene toda la información de los modelos

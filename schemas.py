@@ -7,7 +7,7 @@
 #   3. DOCUMENTAR automáticamente la API
 #
 # ¿POR QUÉ SCHEMAS SEPARADOS DE LOS MODELOS?
-#   Los modelos SQLAlchemy (models.py) representan la BD.
+#   Los modelos SQLAlchemy (models.txt) representan la BD.
 #   Los schemas Pydantic representan lo que la API acepta/devuelve.
 #   Son capas diferentes con responsabilidades diferentes:
 #

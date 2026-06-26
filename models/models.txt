@@ -1,0 +1,42 @@
+# ============================================================
+# MODELS.PY - Modelos ORM con SQLAlchemy
+# ============================================================
+# Los modelos son clases de Python que representan tablas
+# en la base de datos. Gracias al ORM (Object Relational
+# Mapper), en vez de escribir SQL crudo, trabajamos con
+# objetos Python.
+#
+# ANALOGÍA:
+#   Tabla en BD  <-->  Clase Python
+#   Columna      <-->  Atributo de clase
+#   Fila/Registro<-->  Instancia de la clase
+#
+# EJEMPLO:
+#   tasks (tabla)    <-->  Task (clase)
+#   id INT           <-->  id: int
+#   title VARCHAR    <-->  title: str
+#
+# CONCEPTOS QUE DEBES DOMINAR:
+#   - Clases y objetos en Python (POO básica)
+#   - Herencia en Python
+#   - ¿Qué es SQL y qué son tablas, columnas, tipos de datos?
+#   - ¿Qué es una llave primaria (Primary Key)?
+#   - ¿Qué es una llave foránea (Foreign Key)?
+#   - ¿Qué es un índice en una BD?
+# ============================================================
+
+# Column: define una columna en la tabla
+# Integer, String, Boolean, DateTime, Text: tipos de datos SQL
+# ForeignKey: define una relación entre tablas
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Text, ForeignKey
+
+# func: funciones SQL (como now() para obtener la fecha actual)
+from sqlalchemy.sql import func
+
+# relationship: define relaciones entre modelos (joins)
+from sqlalchemy.orm import relationship
+
+# Importamos Base desde database.py
+# TODOS los modelos deben heredar de esta clase
+from core.database import Base
+
