@@ -43,9 +43,10 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 
 # Importamos todo lo que creamos en los otros archivos
-import models      # Modelos SQLAlchemy
+import models.task
+import models.category
 import schemas     # Schemas Pydantic
-from core.database import engine, get_db  # Conexión a la BD y generador de sesiones
+from core.database import engine, get_db, Base   # Conexión a la BD y generador de sesiones
 from services import task_service as crud
 
 
@@ -66,7 +67,7 @@ from services import task_service as crud
 # de base de datos. Alembic puede crear, modificar y versionar
 # el esquema de la BD. create_all() es solo para desarrollo.
 # ============================================================
-models.Base.metadata.create_all(bind=engine)
+Base.metadata.create_all(bind=engine)
 
 
 # ============================================================
