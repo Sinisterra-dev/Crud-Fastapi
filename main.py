@@ -1,5 +1,6 @@
 # ============================================================
 # MAIN.PY - Aplicación principal de FastAPI
+print("ESTE ES EL MAIN QUE SE ESTÁ EJECUTANDO")
 # ============================================================
 # Este es el punto de entrada de nuestra aplicación.
 # Aquí es donde:
@@ -45,6 +46,7 @@ from typing import List, Optional
 import models      # Modelos SQLAlchemy
 import schemas     # Schemas Pydantic
 from core.database import engine, get_db  # Conexión a la BD y generador de sesiones
+from services import task_service as crud
 
 
 # ============================================================
