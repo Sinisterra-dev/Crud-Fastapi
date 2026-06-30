@@ -30,7 +30,7 @@
 from sqlalchemy.orm import Session, joinedload
 
 from models.task import Task
-from models.category import Category
+from Category import Category
 
 from schemas.task import TaskCreate, TaskUpdate
 from schemas.category import CategoryCreate, CategoryUpdate
@@ -66,8 +66,8 @@ def get_categories(db: Session, skip: int = 0, limit: int = 100):
         Página 2: skip=10, limit=10  -> registros 11-20
         Página 3: skip=20, limit=10  -> registros 21-30
     """
-    return db.query(models.Category).offset(skip).limit(limit).all()
-    # db.query(models.Category) -> SELECT * FROM categories
+    return db.query(Category).offset(skip).limit(limit).all()
+    # db.query(Category) -> SELECT * FROM categories
     # .offset(skip)             -> OFFSET skip
     # .limit(limit)             -> LIMIT limit
     # .all()                    -> ejecuta la query y devuelve lista
@@ -93,8 +93,8 @@ def get_category(db: Session, category_id: int):
         Usamos .first() para evitar excepciones si no existe.
     """
     return (
-        db.query(models.Category)
-        .filter(models.Category.id == category_id)  # WHERE id = category_id
+        db.query(Category)
+        .filter(Category.id == category_id)  # WHERE id = category_id
         .first()  # LIMIT 1 + manejo de None
     )
 
@@ -109,8 +109,8 @@ def get_category_by_name(db: Session, name: str):
         SELECT * FROM categories WHERE name = name LIMIT 1;
     """
     return (
-        db.query(models.Category)
-        .filter(models.Category.name == name)
+        db.query(Category)
+        .filter(Category.name == name)
         .first()
     )
 
@@ -141,12 +141,12 @@ def create_category(db: Session, category: schemas.CategoryCreate):
 
         Ejemplo:
         category.model_dump() -> {"name": "Trabajo", "description": "..."}
-        models.Category(**{"name": "Trabajo", "description": "..."})
+        Category(**{"name": "Trabajo", "description": "..."})
         equivale a:
-        models.Category(name="Trabajo", description="...")
+        Category(name="Trabajo", description="...")
     """
     # Creamos la instancia del modelo SQLAlchemy con los datos del schema
-    db_category = models.Category(**category.model_dump())
+    db_category = Category(**category.model_dump())
 
     # db.add(): registra el objeto en la sesión (no lo guarda aún en la BD)
     # La sesión "trackea" (rastrea) este objeto para guardarlo
