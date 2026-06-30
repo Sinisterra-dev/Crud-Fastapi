@@ -30,7 +30,7 @@
 from sqlalchemy.orm import Session, joinedload
 
 from models.task import Task
-from Category import Category
+from models.category import Category
 
 from schemas.task import TaskCreate, TaskUpdate
 from schemas.category import CategoryCreate, CategoryUpdate
@@ -115,7 +115,7 @@ def get_category_by_name(db: Session, name: str):
     )
 
 
-def create_category(db: Session, category: schemas.CategoryCreate):
+def create_category(db: Session, category: CategoryCreate):
     """
     CREA una nueva categoría en la base de datos.
 
@@ -164,7 +164,7 @@ def create_category(db: Session, category: schemas.CategoryCreate):
     return db_category
 
 
-def update_category(db: Session, category_id: int, category_update: schemas.CategoryUpdate):
+def update_category(db: Session, category_id: int, category_update: CategoryUpdate):
     """
     ACTUALIZA una categoría existente.
 
@@ -275,17 +275,17 @@ def get_tasks(
         Si solo devuelves 10 tareas, ¿cómo sabe que hay 150 en total?
     """
     # Empezamos la query base
-    query = db.query(models.Task)
+    query = db.query(Task)
 
     # Aplicamos filtros dinámicamente (solo si el parámetro no es None)
     # Esto es el patrón "filtros opcionales"
     if completed is not None:
         # SQL: WHERE completed = completed
-        query = query.filter(models.Task.completed == completed)
+        query = query.filter(Task.completed == completed)
 
     if priority is not None:
         # SQL: WHERE priority = priority
-        query = query.filter(models.Task.priority == priority)
+        query = query.filter(Task.priority == priority)
 
     # Contamos el total ANTES de aplicar paginación
     # SQL: SELECT COUNT(*) FROM tasks WHERE ...
@@ -294,7 +294,7 @@ def get_tasks(
     # Aplicamos paginación y ejecutamos la query
     # SQL: SELECT * FROM tasks WHERE ... LIMIT limit OFFSET skip
     # joinedload: hace un LEFT JOIN para cargar .category en la misma query
-    tasks = query.options(joinedload(models.Task.category)).offset(skip).limit(limit).all()
+    tasks = query.options(joinedload(Task.category)).offset(skip).limit(limit).all()
 
     return total, tasks
 
@@ -323,14 +323,14 @@ def get_task(db: Session, task_id: int):
     RETORNA: objeto Task (con .category ya cargado) o None si no existe
     """
     return (
-        db.query(models.Task)
-        .options(joinedload(models.Task.category))  # LEFT JOIN con categories
-        .filter(models.Task.id == task_id)
+        db.query(Task)
+        .options(joinedload(Task.category))  # LEFT JOIN con categories
+        .filter(Task.id == task_id)
         .first()
     )
 
 
-def create_task(db: Session, task: schemas.TaskCreate):
+def create_task(db: Session, task: TaskCreate):
     """
     CREA una nueva tarea en la base de datos.
 
@@ -344,7 +344,7 @@ def create_task(db: Session, task: schemas.TaskCreate):
         INSERT INTO tasks (title, description, priority, category_id)
         VALUES (title, description, priority, category_id);
     """
-    db_task = models.Task(**task.model_dump())
+    db_task = Task(**task.model_dump())
     db.add(db_task)
     db.commit()
     # Recargamos el objeto con joinedload para obtener la relación category
@@ -353,7 +353,7 @@ def create_task(db: Session, task: schemas.TaskCreate):
     return get_task(db, db_task.id)
 
 
-def update_task(db: Session, task_id: int, task_update: schemas.TaskUpdate):
+def update_task(db: Session, task_id: int, task_update: TaskUpdate):
     """
     ACTUALIZA una tarea existente (actualización parcial).
 
@@ -430,8 +430,8 @@ def get_tasks_by_category(db: Session, category_id: int):
         SELECT * FROM tasks WHERE category_id = category_id;
     """
     return (
-        db.query(models.Task)
-        .options(joinedload(models.Task.category))  # LEFT JOIN con categories
-        .filter(models.Task.category_id == category_id)
+        db.query(Task)
+        .options(joinedload(Task.category))  # LEFT JOIN con categories
+        .filter(Task.category_id == category_id)
         .all()
     )
