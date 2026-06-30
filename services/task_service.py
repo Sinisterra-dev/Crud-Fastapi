@@ -29,13 +29,11 @@
 # Necesario para que la relación esté disponible DESPUÉS de cerrar la sesión
 from sqlalchemy.orm import Session, joinedload
 
-# Importamos los modelos ORM (las clases que representan tablas)
-import models
+from models.task import Task
+from models.category import Category
 
-# Importamos los schemas Pydantic (las clases que validan datos)
-from schemas import category, task
-
-
+from schemas.task import TaskCreate, TaskUpdate
+from schemas.category import CategoryCreate, CategoryUpdate
 # ============================================================
 # CRUD DE CATEGORIES (Categorías)
 # ============================================================
