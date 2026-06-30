@@ -33,7 +33,7 @@ from sqlalchemy.orm import Session, joinedload
 import models
 
 # Importamos los schemas Pydantic (las clases que validan datos)
-import schemas
+from schemas import category, task
 
 
 # ============================================================
