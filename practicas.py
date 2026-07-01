@@ -58,3 +58,17 @@ def get_active_products():
             
     return activos
 
+#Mision 2
+##GET /products/out-of-stock con stock ==0
+
+@router.get("/out-of-stock")
+def get_out_of_stock_products():
+    out_of_stock = []
+
+    for product in products_list:
+        if product["stock"] == 0:
+            out_of_stock.append(product)
+
+    return out_of_stock
+
+
