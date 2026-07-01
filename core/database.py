@@ -40,7 +40,7 @@ from sqlalchemy.orm import sessionmaker     # Fábrica de sesiones de BD
 # Para producción usarías algo como:
 #   postgresql://user:password@localhost:5432/mydb
 # ============================================================
-DATABASE_URL = "sqlite:///./tasks.db"
+DATABASE_URL = "mysql+pymysql///./tasks.db"
 
 
 # ------------------------------------------------------------
