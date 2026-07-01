@@ -37,4 +37,24 @@ products_list = [
         "sold": 34
     }
 ]
+#Historia de usuario
+##Como administrador quiero ver únicamente los productos que están activos.
+
+activos = []
+
+for product in products_list:
+    if product["active"]:
+        activos.append(product) 
+print(activos)
+
+#JSON
+@router.get("/active")
+def get_active_products():
+    activos = []
+
+    for product in products_list:
+        if product["active"]:
+            activos.append(product)
+            
+    return activos
 
