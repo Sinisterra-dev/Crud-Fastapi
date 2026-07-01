@@ -83,3 +83,18 @@ def get_most_sold_products():
             most_sold.append(product)
 
     return most_sold
+
+# Misiópn 4 Valor total del inventario
+# GET /products/inventory-value
+
+@router.get("/inventory-value")
+def get_inventory_value():
+    total_inventory = 0
+
+    for product in products_list:
+        total_inventory += product["price"] * product["stock"]
+      
+
+    return {
+    "inventory_value": total_inventory
+}
