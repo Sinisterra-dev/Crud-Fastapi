@@ -103,6 +103,7 @@ def get_inventory_value():
 ##Como administrador quiero saber cuál es el producto más caro.
 #GET /products/most-expensive
 
+
 @router.get("/most-expensive")
 def get_most_expensive():
     product_max_expensive = products_list[0]
@@ -117,3 +118,14 @@ def get_most_expensive():
 
 #Misión 6 - Buscar por nombre
 #GET /products/search/{name}
+
+@router.get("/search/{name}")
+def search_products(name: str):
+    for product in products_list:
+        if product["name"].lower() ==  name.lower():
+            return product
+
+    return {
+    "error": "Product not found"
+}
+
