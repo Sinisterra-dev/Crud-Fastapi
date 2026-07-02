@@ -115,3 +115,5 @@ def get_most_expensive():
     return product_max_expensive
     
 
+#Misión 6 - Buscar por nombre
+#GET /products/search/{name}
