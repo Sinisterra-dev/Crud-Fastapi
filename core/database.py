@@ -20,6 +20,9 @@
 from sqlalchemy import create_engine        # Crea la "conexión" a la BD
 from sqlalchemy.ext.declarative import declarative_base  # Clase base para modelos
 from sqlalchemy.orm import sessionmaker     # Fábrica de sesiones de BD
+from dotenv import load_dotenv
+import os
+from .config import DATABASE_URL
 
 
 # ------------------------------------------------------------
