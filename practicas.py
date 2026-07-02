@@ -133,3 +133,18 @@ def search_products(name: str):
 #Mision 7
 # PATCH /products/{id}/sell
 
+@router.patch("/{id}/sell")
+def sell_products (id: int, sell: int):
+    for product in products_list:
+        if product["id"] == id:
+            if product["stock"] >= sell:
+                product["stock"] -=sell
+                product["sold"] += sell
+                return product
+            else:
+                return {
+                "error" : "El stock es insuficiente"
+                }
+    return {
+        "error": "Producto no encontrado"
+    }
