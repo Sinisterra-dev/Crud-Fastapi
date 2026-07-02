@@ -129,3 +129,7 @@ def search_products(name: str):
     "error": "Product not found"
 }
 
+
+#Mision 7
+# PATCH /products/{id}/sell
+
