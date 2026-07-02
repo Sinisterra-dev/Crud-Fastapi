@@ -20,9 +20,8 @@
 from sqlalchemy import create_engine        # Crea la "conexión" a la BD
 from sqlalchemy.ext.declarative import declarative_base  # Clase base para modelos
 from sqlalchemy.orm import sessionmaker     # Fábrica de sesiones de BD
-from dotenv import load_dotenv
-import os
-from .config import DATABASE_URL
+
+from core.config import DATABASE_URL
 
 
 # ------------------------------------------------------------
@@ -43,9 +42,6 @@ from .config import DATABASE_URL
 # Para producción usarías algo como:
 #   postgresql://user:password@localhost:5432/mydb
 # ============================================================
-DATABASE_URL = "mysql+pymysql///./tasks.db"
-
-
 # ------------------------------------------------------------
 # 2. ENGINE (Motor de base de datos)
 # ------------------------------------------------------------
@@ -65,7 +61,6 @@ DATABASE_URL = "mysql+pymysql///./tasks.db"
 # ============================================================
 engine = create_engine(
     DATABASE_URL,
-    connect_args={"check_same_thread": False}  # Necesario SOLO para SQLite
 )
 
 
