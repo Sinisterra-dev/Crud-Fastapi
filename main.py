@@ -27,6 +27,7 @@ import models.category
 import models.task
 from core.database import Base, engine
 from practicas import router as practicas_router
+from routers import task_router, category_router
 
 
 # ============================================================
@@ -73,6 +74,8 @@ app = FastAPI(
 # Todas esas rutas empiezan con /products.
 # ============================================================
 app.include_router(practicas_router)
+app.include_router(category_router)
+app.include_router(task_router)
 
 
 # ------------------------------------------------------------
