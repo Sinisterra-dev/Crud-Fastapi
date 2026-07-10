@@ -78,10 +78,19 @@ class Task(Base):
     # default= lo hace Python antes de enviar a la BD
     created_at = Column(DateTime, server_default=func.now())
 
+
+
     # Fecha y hora de última actualización
     # onupdate=func.now(): SQLAlchemy actualiza este campo automáticamente
     # cada vez que el registro se modifica
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
+
+    user_id = Column(
+        Integer,
+        ForeignKey("users.id", ondelete="SET NULL"),
+        nullable=False
+    )
+    user = relationship("User", back_populates="tasks")
 
     # ------------------------------------------------------------
     # RELATIONSHIP con Category
