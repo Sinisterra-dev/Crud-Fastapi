@@ -11,7 +11,7 @@ import models.task
 import models.category
 import schemas.category
 from core.database import engine, get_db, Base   # Conexión a la BD y generador de sesiones
-from services import task_service as crud
+from services import category_service as crud
 
 
 
