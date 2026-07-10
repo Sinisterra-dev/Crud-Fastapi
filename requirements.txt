@@ -34,3 +34,18 @@ sqlalchemy>=2.0.0
 # de los endpoints. Con Pydantic defines "la forma" de tus datos.
 # Versión v2 es significativamente más rápida que v1.
 pydantic>=2.0.0
+
+# python-jose - Biblioteca para trabajar con JWT (JSON Web Tokens)
+# Se usa para crear y verificar tokens de autenticación JWT.
+# [cryptography] incluye los algoritmos de encriptación necesarios.
+python-jose[cryptography]>=3.3.0
+
+# passlib - Biblioteca para hash de contraseñas
+# Se usa para hashear contraseñas de forma segura antes de almacenarlas.
+# [bcrypt] incluye el algoritmo bcrypt, que es el estándar actual.
+passlib[bcrypt]>=1.7.4
+
+# python-dotenv - Cargar variables de entorno desde archivo .env
+# Permite mantener configuraciones sensibles (SECRET_KEY, DB_PASSWORD)
+# fuera del código fuente.
+python-dotenv>=1.0.0

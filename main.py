@@ -25,11 +25,13 @@ from fastapi import FastAPI
 
 import models.category
 import models.task
+import models.user
 from core.database import Base, engine
 from practicas import router as practicas_router
-from routers import task_router, category_router
+from routers import task_router, category_router, auth_router
 from routers.task_router import router as task_router
 from routers.category_router import router as category_router
+from routers.auth_router import router as auth_router
 
 
 # ============================================================
@@ -76,6 +78,7 @@ app = FastAPI(
 # Todas esas rutas empiezan con /products.
 # ============================================================
 app.include_router(practicas_router)
+app.include_router(auth_router)
 app.include_router(category_router)
 app.include_router(task_router)
 

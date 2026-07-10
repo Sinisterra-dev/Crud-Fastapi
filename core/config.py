@@ -21,3 +21,8 @@ DATABASE_URL = (
     f"mysql+pymysql://{DB_USER}:{DB_PASSWORD}"
     f"@{DB_HOST}:{DB_PORT}/{DB_NAME}"
 )
+
+# Configuración de JWT
+SECRET_KEY = os.getenv("SECRET_KEY", "tu_clave_secreta_super_segura_cambiar_en_produccion")
+ALGORITHM = os.getenv("ALGORITHM", "HS256")
+ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "30"))
