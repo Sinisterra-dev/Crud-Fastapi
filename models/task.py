@@ -87,7 +87,7 @@ class Task(Base):
 
     user_id = Column(
         Integer,
-        ForeignKey("users.id", ondelete="SET NULL"),
+        ForeignKey("users.id", ondelete="CASCADE"),
         nullable=False
     )
     user = relationship("User", back_populates="tasks")

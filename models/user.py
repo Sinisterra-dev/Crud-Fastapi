@@ -14,7 +14,7 @@ class User(Base):
     is_active = Column(Boolean, default= True)
     created_at = Column(DateTime, server_default=func.now())
     updated_at = Column(DateTime, server_default=func.now(), onupdate=func.now())
-    role = Column(String(50), unique=False, nullable=False)
+    role = Column(String(50), unique=False, nullable=False, default= "user")
     tasks = relationship("Task", back_populates="user")
 
 

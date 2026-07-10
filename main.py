@@ -28,6 +28,8 @@ import models.task
 from core.database import Base, engine
 from practicas import router as practicas_router
 from routers import task_router, category_router
+from routers.task_router import router as task_router
+from routers.category_router import router as category_router
 
 
 # ============================================================

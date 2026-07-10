@@ -11,6 +11,8 @@ from core.database import Base
 import models
 from models.task import Task
 from models.category import Category
+from models.user import User
+
 
 
 
