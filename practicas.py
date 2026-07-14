@@ -145,12 +145,20 @@ def find_product(product_id: int):
 
 def next_product_id():
     """Calcula el siguiente id disponible."""
-    pass
+    max_id = 0
+
+    for product in products_list:
+        if product["id"] > max_id:
+            max_id = product["id"]
+
+    return max_id + 1
 
 
 def product_with_discount(product):
     """Devuelve una copia con el precio final despues del descuento."""
-    pass
+    for product_dis in products_list:
+        if product_dis == product["discount"]:
+            return 
 
 
 # ============================================================
