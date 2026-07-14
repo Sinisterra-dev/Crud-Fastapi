@@ -137,7 +137,10 @@ class ProductUpdate(BaseModel):
 
 def find_product(product_id: int):
     """Busca un producto por id. Retorna None si no existe."""
-    pass
+    for product in products_list:
+        if product["id"] ==  product_id:
+            return product
+    return None
 
 
 def next_product_id():
