@@ -156,9 +156,13 @@ def next_product_id():
 
 def product_with_discount(product):
     """Devuelve una copia con el precio final despues del descuento."""
-    for product_dis in products_list:
-        if product_dis == product["discount"]:
-            return 
+    copy_product = product.copy()
+
+    final_price = product ["price"] - (product ["price"] * product["discount"]/100)
+
+    copy_product["price"] = final_price
+
+    return copy_product
 
 
 # ============================================================
