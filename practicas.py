@@ -212,7 +212,12 @@ def get_most_sold_products():
 # GET /products/inventory-value
 @router.get("/inventory-value")
 def get_inventory_value():
-    pass
+    total = 0
+    for product in products_list:
+        total += product["stock"] * product["price"]
+    return total
+        
+    
 
 
 # Mision 5
