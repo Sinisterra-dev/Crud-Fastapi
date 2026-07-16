@@ -225,7 +225,11 @@ def get_inventory_value():
 # GET /products/most-expensive
 @router.get("/most-expensive")
 def get_most_expensive():
-    pass
+    product_most_expensive = products_list[0]
+    for product in products_list:
+        if product["price"] > product_most_expensive:
+            product_most_expensive = product
+    return product_most_expensive
 
 
 # Mision 6 (Modificada)
