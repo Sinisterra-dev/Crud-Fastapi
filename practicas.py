@@ -187,7 +187,11 @@ def get_active_products():
 # GET /products/out-of-stock
 @router.get("/out-of-stock")
 def get_out_of_stock_products():
-    pass
+    products_without_stock = []
+    for product in products_list:
+        if product["stock"] == 0:
+            products_without_stock.append(product)
+    return products_without_stock
 
 
 # Mision 3
