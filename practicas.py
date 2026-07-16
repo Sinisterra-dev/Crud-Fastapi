@@ -174,7 +174,12 @@ def product_with_discount(product):
 # GET /products/active
 @router.get("/active")
 def get_active_products():
-    pass
+    active_products = []
+    for product in products_list:
+        if product["active"]:
+            active_products.append(product)
+    return active_products
+            
 
 
 # Mision 2
