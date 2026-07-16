@@ -199,7 +199,12 @@ def get_out_of_stock_products():
 # GET /products/most-sold
 @router.get("/most-sold")
 def get_most_sold_products():
-    pass
+    products_more_100_sales = []
+    for product in products_list:
+        if product["sold"] > 100:
+           products_more_100_sales.append(product)
+    return products_more_100_sales
+
 
 
 # Mision 4
